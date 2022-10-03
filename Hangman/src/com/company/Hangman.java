@@ -28,6 +28,39 @@ public class Hangman {
         StringBuffer result = new StringBuffer(secretWordList[chosenIndex]); // secret word as the type of a StringBuffer
         return result;
     }
+    public static int tryThis(char letter)
+    {
+        String upperCaseSecretWord = this.secretword.toUpperCase();
+        letter = Character.toUpperCase(letter);
+        String tempUsedLetters = this.usedLetters.toUpperCase();
+        int numberOfOccurence = 0;
+
+        if(tempUsedLetters.indexOf("" + letter) > -1)
+        {
+            this.numberOfIncorrectTries++;
+            return 0;
+        }
+        else
+        {
+            tempUsedLetters = tempUsedLetters + letter;
+
+            for(int i = 0; i < tempUsedLetters.length(); i++)
+            {
+                if(this.secretWord.charAt(i) == letter)
+                {
+                    numberOfOccurence++;
+                }
+
+            }
+            if(numberOfOccurence == 0)
+            {
+                this.numberOfIncorrectTries++;
+            }
+            this.usedLetters = tempUsedLetters;
+            return numberOfOccurence;
+        }
+    }
+}
 
 
 
